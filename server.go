@@ -8,6 +8,6 @@ func main() {
 }
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-	println("jjjjjjjjjjjjj 2")
+	println("Chamou!!!")
 	w.Write([]byte("<h1>Hello Full Cycle!!!</h1>"))
 }
