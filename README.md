@@ -40,8 +40,24 @@ kubectl get pods
 kubectl get replicaset
 kubectl delete pods 'nome do pod'
 kubectl get pods
+kubectl describe pod goserver-ldxdc
 
+kubectl get replicasets
+kubectl delete replicaset goserver
+kubectl get pods
 
+kubectl apply -f k8s/deployment.yaml
+kubectl describe pod goserver-77fc4fd66f-p264z
+kubectl get deployments
+
+# ver versões lançadas
+kubectl rollout history deployment goserver
+
+# faz rollback
+kubectl rollout undo deployment goserver # vai pra ultima
+kubectl rollout undo deployment goserver --to-revision=2 #vai pra versao definida
+
+kubectl describe deployment goserver
 ```
 
 ## Go
@@ -54,6 +70,11 @@ go run server.go
 
 ```bash
 docker build -t rafaelbertelli89/hello-go .
+docker build -t rafaelbertelli89/hello-go:v3 .
+
 docker run --rm -p 8080:8080 rafaelbertelli89/hello-go
+docker run --rm -p 8080:8080 rafaelbertelli89/hello-go:v3
+
 docker push rafaelbertelli89/hello-go
+docker push rafaelbertelli89/hello-go:v3
 ```
