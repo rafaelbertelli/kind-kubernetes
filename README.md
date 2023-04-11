@@ -58,6 +58,12 @@ kubectl rollout undo deployment goserver # vai pra ultima
 kubectl rollout undo deployment goserver --to-revision=2 #vai pra versao definida
 
 kubectl describe deployment goserver
+
+kubectl apply -f k8s/service.yaml
+kubectl port-forward pod-name 8080:8080
+kubectl port-forward svc/goserver-service 8080:8080
+kubectl port-forward svc/goserver-service 9000:8080 # pela porta 9000 no browser, acesso a porta 8080 do serviço
+
 ```
 
 ## Go
